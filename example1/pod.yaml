@@ -5,5 +5,4 @@ metadata:
 spec:
   containers:
     - name: example1
-      image: image-registry.openshift-image-registry.svc:5000/build-demo/example1:latest
-      command: ["tail", "-f", "/dev/null"]
+      image: image-registry.openshift-image-registry.svc:5000/build-demo/example1:v1

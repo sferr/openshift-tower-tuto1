@@ -1,0 +1,16 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: module-builder
+spec:
+  containers:
+    - name: module-builder
+      image: image-registry.openshift-image-registry.svc:5000/tower/module-builder:latest
+      command: ["tail", "-f", "/dev/null"]
+      volumeMounts:
+        - name: customenv
+          mountPath: /opt/customenv
+  volumes:
+    - name: customenv
+      persistentVolumeClaim:
+        claimName: customenv
