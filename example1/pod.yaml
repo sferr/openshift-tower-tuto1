@@ -1,0 +1,9 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: example1
+spec:
+  containers:
+    - name: example1
+      image: image-registry.openshift-image-registry.svc:5000/build-demo/example1:latest
+      command: ["tail", "-f", "/dev/null"]
