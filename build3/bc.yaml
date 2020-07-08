@@ -1,0 +1,29 @@
+apiVersion: build.openshift.io/v1
+kind: BuildConfig
+metadata:
+  labels:
+    build: build3
+  name: build3
+  namespace: build-demo
+spec:
+  failedBuildsHistoryLimit: 5
+  output:
+    to:
+      kind: ImageStreamTag
+      name: build3:latest
+  postCommit: {}
+  resources: {}
+  runPolicy: Serial
+  source:
+    images:
+      - from: 
+          kind: ImageStreamTag
+          name: build2:latest
+          namespace: build-demo
+        paths: 
+          - destinationDir: important-resource.txt
+            sourcePath: /important-resource.txt
+    dockerfile: "FROM centos:7" 
+  strategy: 
+    dockertrategy:
+  successfulBuildsHistoryLimit: 5

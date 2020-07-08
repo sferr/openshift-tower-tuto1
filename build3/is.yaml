@@ -1,0 +1,8 @@
+kind: ImageStream
+apiVersion: image.openshift.io/v1
+metadata:
+  name: build3
+  namespace: build-demo
+  labels:
+    build: build3
+spec: {}

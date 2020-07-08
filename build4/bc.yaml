@@ -1,0 +1,33 @@
+apiVersion: build.openshift.io/v1
+kind: BuildConfig
+metadata:
+  labels:
+    build: build4
+  name: build4
+  namespace: build-demo
+spec:
+  failedBuildsHistoryLimit: 5
+  output:
+    to:
+      kind: ImageStreamTag
+      name: build4:latest
+  postCommit: {}
+  resources: {}
+  runPolicy: Serial
+  source:
+    git: 
+      uri: https://gitlab.com/marouim/water-api.git
+      ref: master
+    
+    contextDir: myapp
+    configMaps:
+      - configMap:
+          name: db-config
+
+  strategy:
+    type: "Source"
+    sourceStrategy:
+      from:
+        kind: "ImageStreamTag"
+        name: "centos:7"
+  successfulBuildsHistoryLimit: 5
