@@ -5,12 +5,12 @@ metadata:
 spec:
   containers:
     - name: module-builder
-      image: image-registry.openshift-image-registry.svc:5000/tower/module-builder:latest
+      image: quay.io/mouimet/ansible-module-builder:latest
       command: ["tail", "-f", "/dev/null"]
       volumeMounts:
-        - name: customenv
-          mountPath: /opt/customenv
+        - name: my-environment1
+          mountPath: /var/lib/awx/venv/my-environment1
   volumes:
-    - name: customenv
+    - name: my-environment1
       persistentVolumeClaim:
-        claimName: customenv
+        claimName: my-environment1
