@@ -5,7 +5,7 @@ metadata:
 spec:
   containers:
     - name: module-builder
-      image: quay.io/mouimet/ansible-module-builder:latest
+      image: quay.io/sferr/ansible-module-builder:latest
       command: ["tail", "-f", "/dev/null"]
       volumeMounts:
         - name: my-environment1
